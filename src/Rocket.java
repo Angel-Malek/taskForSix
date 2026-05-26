@@ -1,22 +1,37 @@
 public class Rocket {
 
-    private final static String ROCKET_STATUS_ON_GROUND = "On ground";
-    private final static String ROCKET_STATUS_IN_SPACE = "In space";
-    private final static String ROCKET_STATUS_IN_REPAIR = "In repair";
+//    private final static String ROCKET_STATUS_ON_GROUND = "On ground";
+//    private final static String ROCKET_STATUS_IN_SPACE = "In space";
+//    private final static String ROCKET_STATUS_IN_REPAIR = "In repair";
 
-    private String status;
-    private String name;
+    private RocketStatus rocketStatus;
+    private final String name;
 
-    public Rocket(String status, String name) {
-        this.status = status;
+    private String missionName;
+
+    public Rocket(RocketStatus rocketStatus, String name) {
+        this.rocketStatus = rocketStatus;
         this.name = name;
     }
 
-    public String getStatus() {
-        return status;
+    public RocketStatus getRocketStatus() {
+        return rocketStatus;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public String getName() {
+        return name;
+    }
+
+    public String getMissionName() {
+        return missionName;
+    }
+
+    void assignToMission(String missionName){
+        this.missionName = missionName;
+        this.rocketStatus = RocketStatus.IN_SPACE;
+    }
+
+    void changeStatus (RocketStatus rocketStatus){
+        this.rocketStatus = rocketStatus;
     }
 }

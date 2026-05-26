@@ -2,54 +2,54 @@ import java.util.List;
 
 public class Mission {
 
-    private final static String ROCKET_STATUS_ON_GROUND = "On ground";
-    private final static String ROCKET_STATUS_IN_SPACE = "In space";
-    private final static String ROCKET_STATUS_IN_REPAIR = "In repair";
+//    private final static String ROCKET_STATUS_ON_GROUND = "On ground";
+//    private final static String ROCKET_STATUS_IN_SPACE = "In space";
+//    private final static String ROCKET_STATUS_IN_REPAIR = "In repair";
 
 
-    private final static String MISSION_STATUS_SCHEDULED = "Scheduled";
-    private final static String MISSION_STATUS_PENDING = "Pending";
-
-    private final static String MISSION_STATUS_IN_PROGRESS = "In progress";
-    private final static String MISSION_STATUS_ENDED = "Ended";
+//    private final static String MISSION_STATUS_SCHEDULED = "Scheduled";
+//    private final static String MISSION_STATUS_PENDING = "Pending";
+//
+//    private final static String MISSION_STATUS_IN_PROGRESS = "In progress";
+//    private final static String MISSION_STATUS_ENDED = "Ended";
 
 
     private List<Rocket> rocketList;
     private String name;
-    private String status;
+    private MissionStatus missionStatus;
 
     public Mission(String name) {
         this.name = name;
-        this.status = MISSION_STATUS_SCHEDULED;
+        this.missionStatus = MissionStatus.SCHEDULED;
     }
 
     void assignRocket(List<Rocket> rocketList){
         rocketList.addAll(rocketList);
-        status = rocketListCheck();
+        missionStatus = rocketListCheck();
     }
 
     void assignRocket(Rocket rocker){
         rocketList.add(rocker);
-        status = rocketListCheck();
+        missionStatus = rocketListCheck();
     }
 
     void removeRocket(Rocket rocket){
         rocketList.remove(rocket);
         if (rocketList.isEmpty() ){
-           status = MISSION_STATUS_ENDED;
+           missionStatus = MissionStatus.ENDED;
         }
     }
 
-   public String rocketListCheck (){
+   public MissionStatus rocketListCheck (){
         if( rocketList.stream()
-                .anyMatch(rocket -> rocket.getStatus()
-                        .equals(ROCKET_STATUS_IN_REPAIR))
+                .anyMatch(rocket -> rocket.getRocketStatus()
+                        .equals(RocketStatus.IN_REPAIR))
         ){
-            status = MISSION_STATUS_PENDING;
+            missionStatus = MissionStatus.PENDING;
         } else {
-            status = MISSION_STATUS_IN_PROGRESS;
+            missionStatus = MissionStatus.IN_PROGRESS;
         }
-        return status;
+        return missionStatus;
     }
 }
 
