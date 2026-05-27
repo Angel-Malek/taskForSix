@@ -1,16 +1,13 @@
-public class Rocket {
+package main;
 
-//    private final static String ROCKET_STATUS_ON_GROUND = "On ground";
-//    private final static String ROCKET_STATUS_IN_SPACE = "In space";
-//    private final static String ROCKET_STATUS_IN_REPAIR = "In repair";
+public class Rocket {
 
     private RocketStatus rocketStatus;
     private final String name;
 
     private String missionName;
 
-    public Rocket(RocketStatus rocketStatus, String name) {
-        this.rocketStatus = rocketStatus;
+    public Rocket( String name) {
         this.name = name;
     }
 
